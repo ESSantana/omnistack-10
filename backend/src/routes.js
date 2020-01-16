@@ -1,15 +1,12 @@
-const {Router } = require('express');
+const { Router } = require('express');
+const DevController = require('./controllers/DevController')
+const SearchController = require('./controllers/SearchController')
 
 const routes = Router();
 
-routes.post('/users', (request, response) => {
+routes.get('/devs', DevController.index);
+routes.post('/devs', DevController.store);
 
-    if(request.body !== null && request.body !== undefined)
-    {
-        return response.json({...request.body});
-    }
-
-    return response.json({});
-});
+routes.get('/search', SearchController.index);
 
 module.exports = routes;
